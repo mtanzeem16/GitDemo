@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="Loan Department" parallel="tests" thread-count="10">
+  <listeners>
+	<listener class-name="test.Listeners"/>
+  </listeners>
+
+  <parameter name="URL" value="https://www.qaclickacademy.com/"/> 		<!-- Suit level parameter -->
+
+  <test thread-count="5" name="Personal Loan">
+  	<parameter name="URL" value="https://personalloan.com/"/> 	<!-- Test level parameter -->
+    <classes>
+      <class name="test.Day1"/>
+      <class name="test.Day2"/>
+    </classes>
+   </test>
+       
+   <test thread-count="5" name="Car Loan">
+    <classes>
+      <class name="test.Day3">
+      	<methods>
+      	  <exclude name="APILoginCarLoan"/>	<!-- Will exclude this one and executes the rest -->
+      	  <exclude name="mobile.*"/> 		<!-- Will excludes all the test with starts with "mobile" one and executes the rest -->
+      	</methods>
+      </class>
+    </classes>
+   </test>
+       
+   <test thread-count="5" name="Home Loan">
+    <classes>
+      <class name="test.Day4">
+      	<methods>
+      	  <include name="webLoginHomeLoan"/> <!-- Will exceute this one and excludes the rest -->
+      	</methods>
+      </class>	
+    </classes>
+   </test> 
+   
+   <test thread-count="5" name="Bike Loan">
+    <parameter name="URL" value="https://bikeloan.com/"/> 	<!-- Test level parameter -->
+    <parameter name="APIKey" value="12345"/> 				<!-- We can have multiple parameters -->
+    <parameter name="UserName" value="tanzeem"/> 			
+    <classes>
+      <class name="test.Day5"/>
+    </classes>
+   </test>
+   
+</suite>
