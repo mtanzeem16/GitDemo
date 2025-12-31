@@ -24,6 +24,8 @@ public class Day1 {
 		System.out.println("1st_Branch_Change_by_UserX");
 		System.out.println("1st_Branch_Change_by_UserX");
 		System.out.println("1st_Branch_Change_by_UserX");
+		System.out.println("1st_Branch_Change_by_UserX");
+		System.out.println("1st_Branch_Change_by_UserX");
 		
 		Assert.assertTrue(false);
     }
